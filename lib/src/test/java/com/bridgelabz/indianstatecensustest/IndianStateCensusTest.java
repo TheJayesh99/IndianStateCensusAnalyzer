@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.bridgelabz.indianstatecensus.CustomExceptionService;
+import com.bridgelabz.customexception.CustomExceptionService;
+import com.bridgelabz.customexception.CustomExceptionService.ExceptionType;
 import com.bridgelabz.indianstatecensus.IndianStateCensusAnalyzer;
 import com.bridgelabz.indianstatecensus.StateCences;
-import com.bridgelabz.indianstatecensus.CustomExceptionService.ExceptionType;
 
 public class IndianStateCensusTest 
 {

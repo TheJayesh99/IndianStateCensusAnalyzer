@@ -1,4 +1,4 @@
-package com.bridgelabz.indianstatecensus;
+package com.bridgelabz.customexception;
 
 public class CustomExceptionService extends RuntimeException
 {
