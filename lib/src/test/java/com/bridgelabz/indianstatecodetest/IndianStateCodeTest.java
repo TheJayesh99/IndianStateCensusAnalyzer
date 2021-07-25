@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import com.bridgelabz.customexception.CustomExceptionService;
 import com.bridgelabz.customexception.CustomExceptionService.ExceptionType;
+import com.bridgelabz.indianstatecensus.IndianStateCensusAnalyzer;
+import com.bridgelabz.indianstatecensus.StateCences;
 import com.bridgelabz.indianstatecodes.IndianStateCodeService;
 import com.bridgelabz.indianstatecodes.StateCode;
 
@@ -25,10 +27,10 @@ public class IndianStateCodeTest
 	public void givenWrongFile_ShouldReturnFileNotFound()
 	{
 		String fileName = "/StateCodeing.csv";
-		IndianStateCodeService censusService = new IndianStateCodeService();
+		IndianStateCodeService codeService = new IndianStateCodeService();
 		try 
 		{	
-			List<StateCode> StateCodeList = censusService.readIndiaStatCode(fileName);
+			List<StateCode> StateCodeList = codeService.readIndiaStatCode(fileName);
 			assertEquals(37, StateCodeList.size());	
 		}
 		catch (CustomExceptionService e) 
@@ -41,10 +43,10 @@ public class IndianStateCodeTest
 	public void givenWrongFileExtention_ShouldReturnWrongFileType()
 	{
 		String fileName = "/StateCodeData.txt";
-		IndianStateCodeService censusService = new IndianStateCodeService();
+		IndianStateCodeService codeService = new IndianStateCodeService();
 		try 
 		{	
-			List<StateCode> StateCodeList = censusService.readIndiaStatCode(fileName);
+			List<StateCode> StateCodeList = codeService.readIndiaStatCode(fileName);
 			assertEquals(37, StateCodeList.size());	
 		}
 		catch (CustomExceptionService e) 
@@ -53,5 +55,19 @@ public class IndianStateCodeTest
 		}		
 	}
 
-	
+	@Test
+	public void givenWrongFileHeaders_ShouldReturnWrongHeader()
+	{
+		String fileName = "/IndiaStateCensusDataWrongHeaders.csv";
+		IndianStateCodeService codeService = new IndianStateCodeService ();
+		try 
+		{	
+			List<StateCode> stateCodeList = codeService.readIndiaStatCode(fileName);
+			assertEquals(37, stateCodeList.size());	
+		}
+		catch (CustomExceptionService e) 
+		{
+			assertEquals(ExceptionType.WRONG_HEADER, e.type);
+		}		
+	}
 }
