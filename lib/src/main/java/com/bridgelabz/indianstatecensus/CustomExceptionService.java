@@ -5,7 +5,8 @@ public class CustomExceptionService extends RuntimeException
 	public enum ExceptionType
 	{
 		FILE_NOT_FOUND,
-		WRONG_FILE_TYPE
+		WRONG_FILE_TYPE, 
+		WRONG_HEADER
 	}
 	
 	public ExceptionType type;
