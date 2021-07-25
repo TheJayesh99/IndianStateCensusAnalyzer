@@ -37,5 +37,21 @@ public class IndianStateCodeTest
 		}
 	}
 
+	@Test
+	public void givenWrongFileExtention_ShouldReturnWrongFileType()
+	{
+		String fileName = "/StateCodeData.txt";
+		IndianStateCodeService censusService = new IndianStateCodeService();
+		try 
+		{	
+			List<StateCode> StateCodeList = censusService.readIndiaStatCode(fileName);
+			assertEquals(37, StateCodeList.size());	
+		}
+		catch (CustomExceptionService e) 
+		{
+			assertEquals(ExceptionType.WRONG_FILE_TYPE, e.type);
+		}		
+	}
+
 
 }
