@@ -19,6 +19,10 @@ public class IndianStateCensusAnalyzer
 	{
 		try 
 		{
+			if (!FileName.split("\\.")[1].equals("csv"))
+			{
+				throw new CustomExceptionService(ExceptionType.WRONG_FILE_TYPE,"enter proper extension");
+			}
 			Reader reader = Files.newBufferedReader(Paths.get(FILE_PATH+FileName));   //reader to read contacts
 			CsvToBean<StateCences> csvToBean = new CsvToBeanBuilder<StateCences>(reader)
 					.withType(StateCences.class)
